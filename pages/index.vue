@@ -156,10 +156,6 @@ onMounted(async () => {
     if (staticCollection) {
       staticCollection.entries = data
     }
-
-    if(!chartData.activeDataset && chartData.collections[1]?.entries[0]){
-      chartData.setActiveDataset(chartData.collections[1].entries[0]);
-    }
   } catch (e) {
     console.error('Failed to load static chart data:', e)
   }
