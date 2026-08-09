@@ -1,3 +1,4 @@
+import type { ChartConfiguration, ChartTypeLiteral } from './chart-types.interface';
 import { defineStore } from 'pinia';
 
 interface Collection {
@@ -23,9 +24,9 @@ interface ChartDataState {
 export const useChartData = defineStore('chart-data', {
     state:() => {
         const stateDraft = {
-        collections:[],
-        activeCollection: null,
-        activeDataset: null
+            collections:[],
+            activeCollection: null,
+            activeDataset: null
         } as ChartDataState;
 
         if(stateDraft.collections[0]){
@@ -35,13 +36,22 @@ export const useChartData = defineStore('chart-data', {
         return stateDraft;
     },
     actions:{
-        setActiveDataset(dataset: ChartDataDTO){
+        setActiveCollection(collection: Collection | null){
+            //@ts-ignore
+            this.activeCollection = collection;
+        },
+
+        setActiveDataset(dataset: ChartDataDTO | null){
             //@ts-ignore
             this.activeDataset = dataset;
         },
 
         initializeCollections(newCollections: Collection[]){
             this.collections.push(...newCollections);
+
+            if(!this.activeCollection && newCollections[0]){
+                this.activeCollection = newCollections[0];
+            }
         }
     }
 });
