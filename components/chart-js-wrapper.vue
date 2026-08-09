@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, useTemplateRef, watch } from 'vue';
 import { Chart } from 'chart.js/auto';
-// import { type ChartConfiguration, type ChartTypeLiteral, isChartConfigurationWithType } from '~/utils/chart-types.interface';
+import { type ChartConfiguration, type ChartTypeLiteral, isChartConfigurationWithType } from '~/utils/chart-types.interface';
 
 interface Props {
   id?: string;
@@ -33,7 +33,9 @@ function renderChart() {
     chartInstance.destroy();
   }
 
-  chartInstance = new Chart(chartRef.value, props.config);
+  // console.warn("rendering the thing...", props.config);
+
+  chartInstance = new Chart(chartRef.value, {...props.config});
 }
 
 onMounted(renderChart);
@@ -41,10 +43,8 @@ onMounted(renderChart);
 watch(
   () => props.config,
   (newConfig) => {
+    console.warn("updating the thing", newConfig);
     if (!chartInstance) return;
-
-    chartInstance.data = newConfig.data;
-    chartInstance.options = newConfig.options ?? {};
 
     if (
       newConfig &&
@@ -58,7 +58,7 @@ watch(
 
     chartInstance.update();
   },
-  { deep: true },
+  // { deep: true },
 );
 </script>
 

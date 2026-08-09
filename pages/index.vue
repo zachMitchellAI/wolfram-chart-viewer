@@ -9,12 +9,12 @@
 <template>
   <v-app theme="mdi-weather-night">
     <v-container fluid class="fg-surface-variant h-100">
-      <v-app-bar class="bar" title="Wolfram Chart Viewer"></v-app-bar>
+      <v-app-bar class="bar" :title="'Wolfram Chart Viewer' + (chartData.activeDataset?.shortenedQuery ? ' - ' + chartData.activeDataset?.shortenedQuery : '')"></v-app-bar>
       <v-row gap="16" size="5">
         <v-col cols="4">
             <!-- ChartJS goes here! -->
-            <v-card :elevation="3">
-              <chart-js-wrapper/>
+            <v-card :elevation="3" height="100%">
+              <chart-js-wrapper :config="chartData.activeDataset"/>
             </v-card>
         </v-col>
         
@@ -22,21 +22,29 @@
         <v-col cols="1">
           <v-sheet elevation="2">
             <v-tabs color="primary" v-model="tab">
-              <v-tab value="wolfram-queries">Wolfram Queries{{ activeDataset ? " - " + activeDataset.shortenedQuery : "" }}</v-tab>
-              <v-tab value="static">Static</v-tab>
+              <v-tab
+                v-for="coll in chartData.collections"
+                :value="coll.name.toLowerCase().replaceAll(' ', '-')"
+              >
+                {{ coll.name }}
+              </v-tab>
             </v-tabs>
   
             <v-divider></v-divider>
   
             <v-tabs-window v-model="tab">
-              <v-tabs-window-item value="wolfram-queries">
-                <v-sheet class="pa-5">
+
+              <v-tabs-window-item 
+                v-for="coll in chartData.collections"
+                :key="coll.name"
+                :value="coll.name.toLowerCase().replaceAll(' ', '-')"
+              >
+                <v-sheet class="pa-5" v-if="coll.queriable">
                   <v-textarea label="I'm an AI with an MCP server! Ask me in plain english!" variant="solo" v-model="query"/>
                 </v-sheet>
+
               </v-tabs-window-item>
-              <v-tabs-window-item value="static">
-                <v-sheet class="pa-5" color="orange">Two</v-sheet>
-              </v-tabs-window-item>
+
             </v-tabs-window>
           </v-sheet>
         </v-col>
@@ -49,5 +57,43 @@
 <script setup>
 const tab = ref('wolfram-queries');
 const query = ref('How expensive is gas between Torronto, and Honalulu Hawaii?');
-const {collections, activeCollection, activeDataset} = useChartData();
+const chartData = useChartData();
+
+// {collections, activeCollection, activeDataset, initializeCollections, setActiveDataset} 
+
+if(!chartData.collections.length){
+  chartData.initializeCollections([
+    // Wolfram queries - doesn't need to have anything pre-filled
+    {
+      name: "Wolfram Queries",
+      queriable: true,
+      entries:[]
+    },
+
+    // On the other hand, static information should get filled in
+    {
+      name: "Static",
+      queriable: false,
+      entries:[]
+    },
+  ])
+}
+
+// watch(()=>chartData.activeDataset, (newDataset)=>{
+//   console.warn('eyoooooo', newDataset);
+// })
+
+onMounted(async () => {
+  try {
+    const data = await $fetch('/static-chart-data.json')
+    const staticCollection = chartData.collections.find(c => c.name === 'Static')
+    if (staticCollection) {
+      staticCollection.entries = data
+    }
+
+    chartData.setActiveDataset(chartData.collections[1].entries[0].dataset);
+  } catch (e) {
+    console.error('Failed to load static chart data:', e)
+  }
+})
 </script>
