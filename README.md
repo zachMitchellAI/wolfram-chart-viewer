@@ -113,8 +113,8 @@ Display the entire nutrition facts for "chicken". It must be a bar chart, should
 
 # Gallery
 
-![Currencies](./git-readme-assets/currencies.png)
-![Fruits](./git-readme-assets/fruits.png)
-![Names](./git-readme-assets/names.png)
-![Protein](./git-readme-assets/protein.png)
-![Chicken](./git-readme-assets/chicken.png)
+![Currencies](./gh-readme-assets/currencies.png)
+![Fruits](./gh-readme-assets/fruits.png)
+![Names](./gh-readme-assets/names.png)
+![Protein](./gh-readme-assets/protein.png)
+![Chicken](./gh-readme-assets/chicken.png)
