@@ -1,0 +1,45 @@
+import { createWolframAgent } from "../../utils/wolfram-agent.ts";
+import mockJson from "../../public/static-chart-data.json";
+import { DeepAgent } from "deepagents";
+
+let generatedAgent: DeepAgent;
+
+export default defineEventHandler(async (event) => {
+  // Create the agent:
+  if (!generatedAgent) {
+    generatedAgent = await createWolframAgent();
+  }
+  const query = new URL(
+    "https://example.com" + event.node.req.url,
+  ).searchParams.get("q");
+
+  if (!query) {
+    event.node.res.statusCode = 400;
+    return {
+      message: "invalid query! use ?q=my query is this!",
+    };
+  }
+
+  console.log("query:", query);
+
+  // In a production environment, we'd need to sanitize this input for things like prompt-jacking.
+  try {
+    const response = await generatedAgent.invoke({
+      messages: [{ role: "user", content: query }],
+    });
+
+    if (!response) {
+      return {
+        message:
+          "The model failed to produce a parsable output... drat. You might have to change the model for that to work.",
+      };
+    }
+
+    console.log(response);
+
+    return response.structuredResponse;
+  } catch (e) {
+    event.node.res.statusCode = 400;
+    return { message: e };
+  }
+});

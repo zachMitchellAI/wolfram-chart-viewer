@@ -4,6 +4,14 @@
     "nuxt": {
       "type": "remote",
       "url": "https://nuxt.com/mcp"
-    }
+    },
+    "docs-langchain": {
+      "type":"remote",
+      "url": "https://docs.langchain.com/mcp"
+    },
+    "reference-langchain": {
+      "type":"remote",
+      "url": "https://reference.langchain.com/mcp"
+    },
   },
 }

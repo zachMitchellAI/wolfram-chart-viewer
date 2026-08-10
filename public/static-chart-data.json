@@ -11,8 +11,22 @@
             "type": "bar",
             "label": "Sales ($)",
             "data": [65, 59, 80, 81, 56, 55],
-            "backgroundColor": ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)", "rgba(255, 206, 86, 0.6)", "rgba(75, 192, 192, 0.6)", "rgba(153, 102, 255, 0.6)", "rgba(255, 159, 64, 0.6)"],
-            "borderColor": ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
+            "backgroundColor": [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 235, 0.6)",
+              "rgba(255, 206, 86, 0.6)",
+              "rgba(75, 192, 192, 0.6)",
+              "rgba(153, 102, 255, 0.6)",
+              "rgba(255, 159, 64, 0.6)"
+            ],
+            "borderColor": [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 159, 64, 1)"
+            ],
             "borderWidth": 1
           }
         ]
@@ -40,8 +54,20 @@
             "type": "pie",
             "label": "Browser Market Share (%)",
             "data": [65.2, 18.5, 9.3, 4.1, 2.9],
-            "backgroundColor": ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)", "rgba(255, 206, 86, 0.6)", "rgba(75, 192, 192, 0.6)", "rgba(153, 102, 255, 0.6)"],
-            "borderColor": ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)"],
+            "backgroundColor": [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 235, 0.6)",
+              "rgba(255, 206, 86, 0.6)",
+              "rgba(75, 192, 192, 0.6)",
+              "rgba(153, 102, 255, 0.6)"
+            ],
+            "borderColor": [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)"
+            ],
             "borderWidth": 1
           }
         ]
@@ -63,7 +89,15 @@
     "dataset": {
       "type": "line",
       "data": {
-        "labels": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "labels": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
         "datasets": [
           {
             "type": "line",
@@ -91,5 +125,74 @@
         }
       }
     }
+  },
+  {
+    "query": "Which state is cheaper for gas? California, or Texas?",
+    "shortenedQuery": "Gas prices California vs Texas",
+    "dataset": {
+      "type": "radar",
+      "data": {
+        "labels": ["California", "Texas"],
+        "datasets": [
+          {
+            "type": "radar",
+            "data": [5.426, 3.095],
+            "label": "Regular Gasoline"
+          },
+          {
+            "type": "radar",
+            "data": [5.772, 3.462],
+            "label": "Mid-Grade Gasoline"
+          },
+          {
+            "type": "radar",
+            "data": [5.906, 3.558],
+            "label": "Premium Gasoline"
+          },
+          {
+            "type": "radar",
+            "data": [6.29, 4.095],
+            "label": "Diesel"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "query": "Which state is cheaper for gas? California, or Texas?",
+    "shortenedQuery": "Cheaper gas: California or Texas?",
+    "dataset": {
+      "type": "doughnut",
+      "data": {
+        "datasets": [
+          {
+            "type": "doughnut",
+            "data": [3.7, 4.5],
+            "backgroundColor": [
+              "rgba(76, 192, 192, 1)",
+              "rgba(255, 99, 132, 1)"
+            ],
+            "borderColor": "white",
+            "borderWidth": 2,
+            "cutout": "50%"
+          }
+        ]
+      },
+      "options": {
+        "responsive": true,
+        "plugins": {
+          "legend": {
+            "position": "top"
+          },
+          "title": {
+            "display": true,
+            "text": "Average Gas Prices (per Gallon)"
+          }
+        }
+      }
+    }
+  },
+  {
+    "loading": true
   }
 ]
