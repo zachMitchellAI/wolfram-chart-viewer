@@ -128,38 +128,6 @@
   },
   {
     "query": "Which state is cheaper for gas? California, or Texas?",
-    "shortenedQuery": "Gas prices California vs Texas",
-    "dataset": {
-      "type": "radar",
-      "data": {
-        "labels": ["California", "Texas"],
-        "datasets": [
-          {
-            "type": "radar",
-            "data": [5.426, 3.095],
-            "label": "Regular Gasoline"
-          },
-          {
-            "type": "radar",
-            "data": [5.772, 3.462],
-            "label": "Mid-Grade Gasoline"
-          },
-          {
-            "type": "radar",
-            "data": [5.906, 3.558],
-            "label": "Premium Gasoline"
-          },
-          {
-            "type": "radar",
-            "data": [6.29, 4.095],
-            "label": "Diesel"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "query": "Which state is cheaper for gas? California, or Texas?",
     "shortenedQuery": "Cheaper gas: California or Texas?",
     "dataset": {
       "type": "doughnut",

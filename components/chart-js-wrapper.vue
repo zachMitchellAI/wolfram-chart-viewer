@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
       labels: ['alpha', 'beta', 'gamma', 'theta'],
       datasets: [{
         label: 'Default Placeholder Data',
-        data: [1,2,3,4],
+        data: [1, 2, 3, 4],
         backgroundColor: '#FFFA',
         borderWidth: 1,
       }],
@@ -35,28 +35,16 @@ function renderChart() {
 
   // console.warn("rendering the thing...", props.config);
 
-  chartInstance = new Chart(chartRef.value, {...props.config});
+  chartInstance = new Chart(chartRef.value, { ...props.config });
 }
 
 onMounted(renderChart);
 
 watch(
   () => props.config,
-  (newConfig) => {
-    console.warn("updating the thing", newConfig);
-    if (!chartInstance) return;
-
-    if (
-      newConfig &&
-      isChartConfigurationWithType(chartInstance.config) &&
-      isChartConfigurationWithType(newConfig) &&
-      chartInstance.config.type !== newConfig.type
-    ) {
-      renderChart();
-      return;
-    }
-
-    chartInstance.update();
+  (_newConfig) => {
+    // console.warn("updating the thing", newConfig)
+    renderChart();
   },
   // { deep: true },
 );

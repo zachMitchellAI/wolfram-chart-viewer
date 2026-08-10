@@ -39,11 +39,8 @@
                     :disabled="boxDisabled" @keydown="queryWolfram" v-model="query" />
                 </v-sheet>
 
-                <DataIterator
-                  :items="coll.entries"
-                  :active-dataset="chartData.activeDataset"
-                  @set-active-dataset="chartData.setActiveDataset"
-                />
+                <DataIterator :items="coll.entries" :active-dataset="chartData.activeDataset"
+                  @set-active-dataset="chartData.setActiveDataset" />
 
               </v-tabs-window-item>
 
