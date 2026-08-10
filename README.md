@@ -61,9 +61,54 @@ Possible routes that could be taken if this was worked on more:
 - data verification (is this a correct shape, even though the model tried?)
 - custom theming
 
+# Starter queries
+
+```
+compare the amount of protein in: Steak, chicken, turkey, polluck (please make a bar chart)
+```
+
+```
+calories of apple, orange, strawberry, grape, dragon fruit (make it a donut graph)
+```
+
+```
+How expensive is gas between Toronto and Honolulu Hawaii?
+```
+
+```
+What is the value of gold, versus the value of bitcoin? (provide actual value in USD and create a pie-chart)
+```
+
+```
+use "name {name}" to query the popularity of the following names: Zach, Felix, Sally, George, Smith, Josh, Chris. Make it a pie chart. Datapoints should be "rank"
+```
+
+```
+box office proffit of toy story 1 versus toy story 2
+```
+
+```
+(skip wolfram) Make me a pie chart that has the following values: 3, 50, 25, 22
+```
+
+```
+A bubble graph of the birth, death, and presidency of the two presidents: george washington, abraham lincoln
+```
+
+```
+"polar area chart" for the value of gold, silver, nickle, copper, diamond. Value should be worth in USD. Colors of the bars should represent the color of each item.
+```
+
+```
+pie chart that has a value of 75% labeled pacman, and a dark-blue remainder with the label "ghost"
+```
+
+```
+Display the entire nutrition facts for "chicken". It must be a bar chart, should have color. Measurement should be % of daily intake
+```
+
 # Known Bugs
 
-- Sometimes a finished query doesn't render right away - click on another graph, then click back onto it!
 - GLM5.2 will sometimes make weird chart data, it confuses chart.js if that happens it can cause the app to crash.
 
 # Gallery
@@ -72,3 +117,4 @@ Possible routes that could be taken if this was worked on more:
 ![Fruits](./git-readme-assets/fruits.png)
 ![Names](./git-readme-assets/names.png)
 ![Protein](./git-readme-assets/protein.png)
+![Chicken](./git-readme-assets/chicken.png)
