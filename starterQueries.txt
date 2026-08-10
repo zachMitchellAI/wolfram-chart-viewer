@@ -1,6 +1,6 @@
 compare the amount of protein in: Steak, chicken, turkey, polluck (please make a bar chart)
 
-calories of apple, orange, strawberry, grape, dragon fruit
+calories of apple, orange, strawberry, grape, dragon fruit (make it a donut graph)
 
 How expensive is gas between Toronto and Honolulu Hawaii?
 

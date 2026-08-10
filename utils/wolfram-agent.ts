@@ -14,9 +14,7 @@ export async function createWolframAgent(): Promise<DeepAgent> {
   });
 
   console.warn("using:", env["CHART_MODEL"]);
-  const model = new ChatOpenRouter(
-    env["CHART_MODEL"] || "google/gemma-4-31b-it",
-  );
+  const model = new ChatOpenRouter(env["CHART_MODEL"] || "z-ai/glm-5.2");
 
   // Langchain provides a very easy to use system to prompt the things you like! You can choose to have a simple agent system, or a deep agent, which is what we're using today
   const agent = await createDeepAgent({

@@ -11,7 +11,7 @@ interface Collection {
 }
 
 // This should either be returned by an api call, or manually configured in the context of static entries
-interface ChartDataDTO {
+export interface ChartDataDTO {
   query: string;
   loading?: boolean;
   shortenedQuery: string;
@@ -58,9 +58,8 @@ export const useChartData = defineStore("chart-data", {
 
       this.activeCollection?.entries.push(skeletonDataset);
 
-      const data = JSON.parse(
-        await (await fetch(`/api/ask-wolfram?q=${query}`)).text(),
-      );
+      const response = await fetch(`/api/ask-wolfram?q=${query}`);
+      const data = JSON.parse(await response.text());
 
       // @ts-ignore
       if (!data["message"]) {
@@ -68,9 +67,12 @@ export const useChartData = defineStore("chart-data", {
         // Our data is ready & ripe for the taking:
         this.activeCollection?.entries.pop();
         this.activeCollection?.entries.push(data);
+        return data;
       }
 
-      return data;
+      // Error case: remove skeleton and return null so caller doesn't set active dataset
+      this.activeCollection?.entries.pop();
+      return null;
     },
 
     initializeCollections(newCollections: Collection[]) {
