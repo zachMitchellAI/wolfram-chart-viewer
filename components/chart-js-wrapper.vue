@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { onMounted, useTemplateRef, watch } from 'vue';
-import { Chart } from 'chart.js/auto';
-import { type ChartConfiguration, type ChartTypeLiteral, isChartConfigurationWithType } from '~/utils/chart-types.interface';
+import { onMounted, useTemplateRef, watch } from "vue";
+import { Chart } from "chart.js/auto";
 
 interface Props {
   id?: string;
@@ -9,21 +8,24 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  config: () => ({
-    type: 'bar',
-    data: {
-      labels: ['alpha', 'beta', 'gamma', 'theta'],
-      datasets: [{
-        label: 'Default Placeholder Data',
-        data: [1, 2, 3, 4],
-        backgroundColor: '#FFFA',
-        borderWidth: 1,
-      }],
-    },
-  }) as ChartConfiguration<ChartTypeLiteral>,
+  config: () =>
+    ({
+      type: "bar",
+      data: {
+        labels: ["alpha", "beta", "gamma", "theta"],
+        datasets: [
+          {
+            label: "Default Placeholder Data",
+            data: [1, 2, 3, 4],
+            backgroundColor: "#FFFA",
+            borderWidth: 1,
+          },
+        ],
+      },
+    }) as ChartConfiguration<ChartTypeLiteral>,
 });
 
-const chartRef = useTemplateRef<HTMLCanvasElement>('chart-ref');
+const chartRef = useTemplateRef<HTMLCanvasElement>("chart-ref");
 let chartInstance: Chart | null = null;
 
 function renderChart() {
@@ -43,10 +45,8 @@ onMounted(renderChart);
 watch(
   () => props.config,
   (_newConfig) => {
-    // console.warn("updating the thing", newConfig)
     renderChart();
   },
-  // { deep: true },
 );
 </script>
 

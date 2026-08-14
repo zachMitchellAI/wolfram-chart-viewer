@@ -1,6 +1,5 @@
 import { createWolframAgent } from "../../utils/wolfram-agent.ts";
-import mockJson from "../../public/static-chart-data.json";
-import { DeepAgent } from "deepagents";
+import type { DeepAgent } from "deepagents";
 
 let generatedAgent: DeepAgent;
 

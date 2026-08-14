@@ -1,29 +1,9 @@
-import type {
-  ChartConfiguration,
-  ChartTypeLiteral,
-} from "./chart-types.interface";
 import { defineStore } from "pinia";
-
-interface Collection {
-  name: string;
-  queriable: boolean;
-  entries: ChartDataDTO[];
-}
-
-// This should either be returned by an api call, or manually configured in the context of static entries
-export interface ChartDataDTO {
-  query: string;
-  loading?: boolean;
-  shortenedQuery: string;
-  dataset?: ChartConfiguration<ChartTypeLiteral>;
-}
-
-// Initial state for pinia
-interface ChartDataState {
-  collections: Collection[];
-  activeDataset: ChartDataDTO | null;
-  activeCollection: Collection | null;
-}
+import type {
+  Collection,
+  ChartDataDTO,
+  ChartDataState,
+} from "./use-chart-data.interface";
 
 export const useChartData = defineStore("chart-data", {
   state: () => {

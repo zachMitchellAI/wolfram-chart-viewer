@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format": "bunx prettier -cw .",
+    "types": "bunx tsc -b --noEmit"
   },
   "dependencies": {
     "@langchain/core": "^1.2.5",
