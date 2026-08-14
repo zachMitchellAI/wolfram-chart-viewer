@@ -2,12 +2,13 @@
 
 ## Project Instructions for AI Agents
 
-### Type Checking
+### Type & format Checking
 
-**Always run type checking after making changes:**
+**Always run type checking & prettier after making changes:**
 
 ```bash
-bunx tsc -b --noEmit
+bun run types
+bun run format
 ```
 
 This project uses strict TypeScript. Ensure all new code passes type checking before considering a task complete.
