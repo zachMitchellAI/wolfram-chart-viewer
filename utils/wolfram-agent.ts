@@ -92,6 +92,8 @@ export async function createWolframAgent(): Promise<DeepAgent> {
     * query - the original question the user asked
     * shortenedQuery - a re-phrased version of that question, but <= 5 words
     * dataset - ChartConfiguration with type, data, and options
+    * Agent MUST NOT Hallucinate results. Before collecting any data point, ensure the wolfram-agent is called.
+      * Exception: user is asking to skip wolfram entirely
 
     # Output
 
