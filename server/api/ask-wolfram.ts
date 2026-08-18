@@ -2,7 +2,7 @@ import { createWolframAgent } from "../../utils/wolfram-agent.ts";
 import type { DeepAgent } from "deepagents";
 import mockJson from "../../public/static-chart-data.json";
 
-const filteredMock = mockJson.filter(e => !e.loading);
+const filteredMock = mockJson.filter((e) => !e.loading);
 let generatedAgent: DeepAgent;
 
 export default defineEventHandler(async (event) => {
@@ -24,8 +24,8 @@ export default defineEventHandler(async (event) => {
   console.log("query:", query);
 
   // Mock the response given the query is `!mock`
-  if (query === '!mock') {
-    return filteredMock[Math.floor(Math.random() * filteredMock.length)]
+  if (query === "!mock") {
+    return filteredMock[Math.floor(Math.random() * filteredMock.length)];
   }
 
   // In a production environment, we'd need to sanitize this input for things like prompt-jacking.
