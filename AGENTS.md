@@ -32,3 +32,14 @@ When working with charts, import from this barrel file rather than directly from
 - Keep imports organized (external first, then internal)
 - Imports of components DO NOT require having explicit imports. Simply import the component, then confirm the type is working by running the aformentioned type-check
 - use kebab-case for file names & component names within the files themselves
+
+#### AVOID:
+
+in `.vue` files in the script tag:
+
+```ts
+import { computed } from "vue";
+import type { ChartDataDTO } from "~/utils/use-chart-data.interface";
+```
+
+It is not necessary, nuxt takes care of imports automatically

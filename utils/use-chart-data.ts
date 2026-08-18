@@ -21,16 +21,15 @@ export const useChartData = defineStore("chart-data", {
   },
   actions: {
     setActiveCollection(collection: Collection | null) {
-      //@ts-ignore
+      // @ts-ignore
       this.activeCollection = collection;
     },
 
     setActiveDataset(dataset: ChartDataDTO | null) {
-      //@ts-ignore
       this.activeDataset = dataset;
     },
 
-    async queryNewDatset(query: string) {
+    async queryNewDataset(query: string) {
       // A fake dataset until we get a query back from wolfram.
       const skeletonDataset = {
         loading: true,
@@ -38,7 +37,9 @@ export const useChartData = defineStore("chart-data", {
 
       this.activeCollection?.entries.push(skeletonDataset);
 
-      const response = await fetch(`/api/ask-wolfram?q=${query}`);
+      const response = await fetch(
+        `/api/ask-wolfram?q=${encodeURIComponent(query)}`,
+      );
       const data = JSON.parse(await response.text());
 
       // @ts-ignore
@@ -58,8 +59,8 @@ export const useChartData = defineStore("chart-data", {
     initializeCollections(newCollections: Collection[]) {
       this.collections.push(...newCollections);
 
-      if (!this.activeCollection && newCollections[0]) {
-        this.activeCollection = newCollections[0];
+      if (!this.activeCollection && this.collections[0]) {
+        this.activeCollection = this.collections[0];
       }
     },
   },
