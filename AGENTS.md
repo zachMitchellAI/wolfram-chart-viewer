@@ -43,3 +43,7 @@ import type { ChartDataDTO } from "~/utils/use-chart-data.interface";
 ```
 
 It is not necessary, nuxt takes care of imports automatically
+
+## NPM imports
+
+Agents MUST NOT import any new packages without explicit permission. If there are existing packages that need to be upgraded, that is the primary exception. Otherwise if you're thinking a package needs to be installed, please prompt the user before taking the action

@@ -3,7 +3,9 @@
 // This was built so that it's possible to tell LLMs in langchain how to write graphs. If you can bridge this for whatever appliction you're doing, then structured data will always be possible.
 
 import { z } from "zod";
-import { CHART_TYPES } from "./chart-types.interface";
+import { CHART_TYPES, type ChartTypeLiteral } from "./chart-types.interface";
+
+export { CHART_TYPES, type ChartTypeLiteral } from "./chart-types.interface";
 
 export const ChartTypeLiteralSchema = z.enum(
   CHART_TYPES as [string, ...string[]],
@@ -199,3 +201,50 @@ export type ChartDataDTO = z.infer<typeof ChartDataDTOSchema>;
 export type ChartConfiguration = z.infer<typeof ChartConfigurationSchema>;
 export type ChartData = z.infer<typeof ChartDataSchema>;
 export type AnyChartDataset = z.infer<typeof AnyChartDatasetSchema>;
+
+const datasetSchemaByType: Record<ChartTypeLiteral, z.ZodTypeAny> = {
+  bar: BarChartDatasetSchema,
+  line: LineChartDatasetSchema,
+  scatter: ScatterChartDatasetSchema,
+  bubble: BubbleChartDatasetSchema,
+  pie: PieChartDatasetSchema,
+  doughnut: DoughnutChartDatasetSchema,
+  polarArea: PolarAreaChartDatasetSchema,
+  radar: RadarChartDatasetSchema,
+};
+
+export function createChartDataDTOSchema<T extends ChartTypeLiteral>(type: T) {
+  const DatasetSchema = datasetSchemaByType[type];
+  const ChartDataSchemaTyped = z
+    .object({
+      labels: z.array(z.string()).optional(),
+      datasets: z.array(DatasetSchema),
+    })
+    .strict();
+
+  const ChartConfigurationSchemaTyped = z
+    .object({
+      type: z.literal(type),
+      data: ChartDataSchemaTyped,
+      options: z.record(z.string(), z.unknown()).optional(),
+    })
+    .strict();
+
+  return z
+    .object({
+      query: z.string(),
+      toolCallsUsed: z.number(),
+      shortenedQuery: z.string(),
+      dataset: ChartConfigurationSchemaTyped,
+    })
+    .strict();
+}
+
+export const AnyChartDataDTOSchema = z.union(
+  CHART_TYPES.map((t) => createChartDataDTOSchema(t)) as unknown as [
+    z.ZodTypeAny,
+    ...z.ZodTypeAny[],
+  ],
+);
+
+export type AnyChartDataDTO = z.infer<typeof AnyChartDataDTOSchema>;
