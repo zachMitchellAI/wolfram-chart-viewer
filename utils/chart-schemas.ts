@@ -189,6 +189,7 @@ export const ChartConfigurationSchema = z
 export const ChartDataDTOSchema = z
   .object({
     query: z.string(),
+    toolCallsUsed: z.number(),
     shortenedQuery: z.string(),
     dataset: ChartConfigurationSchema,
   })

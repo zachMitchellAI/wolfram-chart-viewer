@@ -70,6 +70,10 @@ const props = withDefaults(defineProps<DataIteratorProps>(), {
                     :title="`Type: ${item.raw.dataset?.type}`"
                   ></v-list-item>
                   <v-list-item
+                      v-if="item.raw.toolCallsUsed"
+                      :title="`Tool Calls Used: ${item.raw.toolCallsUsed}`"
+                  ></v-list-item>
+                  <v-list-item
                     :title="`Labels: ${item.raw.dataset?.data.labels?.join(', ')}`"
                   ></v-list-item>
                   <v-list-item

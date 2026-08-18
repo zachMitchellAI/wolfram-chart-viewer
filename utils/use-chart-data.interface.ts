@@ -14,6 +14,7 @@ export interface ChartDataDTO {
   query: string;
   loading?: boolean;
   shortenedQuery: string;
+  toolCallsUsed?: number;
   dataset?: ChartConfiguration<ChartTypeLiteral>;
 }
 
