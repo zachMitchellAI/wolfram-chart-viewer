@@ -1,3 +1,11 @@
+<style scoped>
+.bar {
+  border-radius: 0.2em;
+  position: unset !important;
+  margin-bottom: 1em;
+}
+</style>
+
 <template>
   <v-app-bar class="bar" :title="computedTitle"></v-app-bar>
 </template>
@@ -15,11 +23,3 @@ const computedTitle = computed(() => {
   return subtitle ? `${base} - ${subtitle}` : base;
 });
 </script>
-
-<style scoped>
-.bar {
-  border-radius: 0.2em;
-  position: unset !important;
-  margin-bottom: 1em;
-}
-</style>

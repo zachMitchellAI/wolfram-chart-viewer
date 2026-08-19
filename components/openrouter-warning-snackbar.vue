@@ -10,10 +10,6 @@ span {
 }
 </style>
 
-<script setup>
-const snackbar = ref(useFetch("/api/needs-api-key").data.value?.result);
-</script>
-
 <template>
   <VSnackbar
     v-model="snackbar"
@@ -39,3 +35,7 @@ const snackbar = ref(useFetch("/api/needs-api-key").data.value?.result);
     </template>
   </VSnackbar>
 </template>
+
+<script setup>
+const snackbar = ref(useFetch("/api/needs-api-key").data.value?.result);
+</script>

@@ -1,20 +1,3 @@
-<script setup lang="ts">
-import type { ChartDataDTO } from "~/utils/chart-schemas";
-import type { ChartDataSkeleton } from "~/utils/use-chart-data.interface";
-
-interface DataIteratorProps {
-  items: (ChartDataDTO | ChartDataSkeleton)[];
-  activeDataset: ChartDataDTO | null;
-  onSetActiveDataset: (dataset: ChartDataDTO) => void;
-}
-
-const props = withDefaults(defineProps<DataIteratorProps>(), {
-  items: () => [],
-  activeDataset: null,
-  onSetActiveDataset: () => {},
-});
-</script>
-
 <template>
   <v-data-iterator
     :items="props.items"
@@ -94,3 +77,20 @@ const props = withDefaults(defineProps<DataIteratorProps>(), {
     </template>
   </v-data-iterator>
 </template>
+
+<script setup lang="ts">
+import type { ChartDataDTO } from "~/utils/chart-schemas";
+import type { ChartDataSkeleton } from "~/utils/use-chart-data.interface";
+
+interface DataIteratorProps {
+  items: (ChartDataDTO | ChartDataSkeleton)[];
+  activeDataset: ChartDataDTO | null;
+  onSetActiveDataset: (dataset: ChartDataDTO) => void;
+}
+
+const props = withDefaults(defineProps<DataIteratorProps>(), {
+  items: () => [],
+  activeDataset: null,
+  onSetActiveDataset: () => {},
+});
+</script>
