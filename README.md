@@ -35,19 +35,9 @@ bun --bun dev
 
 ## Be specific with your prompts
 
-Because GLM5.2 consumes a large zod type, it isn't going to know all the time what the best shape will be, even though we're specific on it's structure.
-
-What's helped me is to tell it what kind of chart you'd like, optionally colors, and the types of values it needs to plot down (e.g "value should be USD")
+What's helped me is to prompt what kind of chart you'd like, optionally colors, and the types of values the chart needs needs to plot down (e.g "value should be USD")
 
 It'll do it's best, but makes mistakes regardless!
-
-## providerStrategy
-
-This is a special inferrence system that transforms any data the model gets into a usable format. In this app's case, it's using a very large (and auto-generated) zod file to tell GLM5.2 how to build a chart.
-
-Not all models on openrouter have this. GLM5.2 I've found works great with this, but it's also a token consumer if you aren't careful!
-
-This is just a preface here to mention if you change the model, it might not work as expected! In an alternate reality this could be mitigated by first grabbing the data, then having a sub-agent transform the data instead of it being in a single step.
 
 # Dream upgrades
 
