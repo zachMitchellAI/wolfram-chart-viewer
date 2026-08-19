@@ -3,12 +3,8 @@ import { env } from "node:process";
 import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 import { ChatOpenRouter } from "@langchain/openrouter";
 import { providerStrategy, toolStrategy } from "langchain";
-import {
-  ChartDataDTOSchema,
-  createChartDataDTOSchema,
-  CHART_TYPES,
-  type ChartTypeLiteral,
-} from "./chart-schemas";
+import { ChartDataDTOSchema, createChartDataDTOSchema } from "./chart-schemas";
+import { CHART_TYPES, type ChartTypeLiteral } from "./chart-types.interface";
 
 const CHART_TYPE_GUIDANCE: Record<ChartTypeLiteral, string> = {
   bar: "Use for categorical comparisons. Data: array of numbers or [min, max] tuples. Supports grouped/stacked bars via multiple datasets.",

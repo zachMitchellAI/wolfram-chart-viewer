@@ -5,8 +5,6 @@
 import { z } from "zod";
 import { CHART_TYPES, type ChartTypeLiteral } from "./chart-types.interface";
 
-export { CHART_TYPES, type ChartTypeLiteral } from "./chart-types.interface";
-
 export const ChartTypeLiteralSchema = z.enum(
   CHART_TYPES as [string, ...string[]],
 );
