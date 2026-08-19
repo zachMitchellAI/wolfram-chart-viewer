@@ -53,7 +53,7 @@ This is just a preface here to mention if you change the model, it might not wor
 
 Possible routes that could be taken if this was worked on more:
 
-- [ ] sub-agent delegation on queries
+- [x] sub-agent delegation on queries
 - [ ] prompt-injection protection (more necessary for database-like projects)
 - [ ] plugins: gather data from other MCP sources & tools
 - [ ] localStorage support to store queries, chart data and history

@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import type {
   Collection,
-  ChartDataDTO,
   ChartDataState,
+  Loading,
 } from "./use-chart-data.interface";
+import { type ChartDataDTO } from "./chart-schemas";
 
 export const useChartData = defineStore("chart-data", {
   state: () => {
@@ -33,7 +34,7 @@ export const useChartData = defineStore("chart-data", {
       // A fake dataset until we get a query back from wolfram.
       const skeletonDataset = {
         loading: true,
-      } as ChartDataDTO;
+      } as Loading;
 
       this.activeCollection?.entries.push(skeletonDataset);
 

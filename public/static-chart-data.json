@@ -2,6 +2,7 @@
   {
     "query": "Sample bar chart showing monthly sales data",
     "shortenedQuery": "Monthly Sales Bar Chart",
+    "toolCallsUsed": 0,
     "dataset": {
       "type": "bar",
       "data": {
@@ -45,6 +46,7 @@
   {
     "query": "Sample pie chart showing market share distribution",
     "shortenedQuery": "Market Share Pie Chart",
+    "toolCallsUsed": 0,
     "dataset": {
       "type": "pie",
       "data": {
@@ -86,6 +88,7 @@
   {
     "query": "Sample line chart showing temperature trends over a week",
     "shortenedQuery": "Weekly Temperature Line Chart",
+    "toolCallsUsed": 0,
     "dataset": {
       "type": "line",
       "data": {
@@ -129,6 +132,7 @@
   {
     "query": "Which state is cheaper for gas? California, or Texas?",
     "shortenedQuery": "Cheaper gas: California or Texas?",
+    "toolCallsUsed": 0,
     "dataset": {
       "type": "doughnut",
       "data": {

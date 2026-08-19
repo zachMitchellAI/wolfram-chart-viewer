@@ -1,21 +1,13 @@
-import type {
-  ChartConfiguration,
-  ChartTypeLiteral,
-} from "./chart-types.interface";
+import { type ChartDataDTO } from "./chart-schemas";
+
+export interface Loading {
+  loading: boolean;
+}
 
 export interface Collection {
   name: string;
   queriable: boolean;
-  entries: ChartDataDTO[];
-}
-
-// This should either be returned by an api call, or manually configured in the context of static entries
-export interface ChartDataDTO {
-  query: string;
-  loading?: boolean;
-  shortenedQuery: string;
-  toolCallsUsed?: number;
-  dataset?: ChartConfiguration<ChartTypeLiteral>;
+  entries: Array<ChartDataDTO | Loading>;
 }
 
 // Initial state for pinia

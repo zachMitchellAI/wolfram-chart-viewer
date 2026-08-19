@@ -41,6 +41,7 @@ export default defineEventHandler(async (event) => {
       };
     }
 
+    // Print the response back to the console
     console.log(response);
 
     return response.structuredResponse;
