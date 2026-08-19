@@ -39,6 +39,10 @@ What's helped me is to prompt what kind of chart you'd like, optionally colors, 
 
 It'll do it's best, but makes mistakes regardless!
 
+## Test the prompt box without actually triggering the LLM
+
+Simply inserting `!mock` in the box allows to test server calls without calling an LLM or using an API key.
+
 # Dream upgrades
 
 Possible routes that could be taken if this was worked on more:
