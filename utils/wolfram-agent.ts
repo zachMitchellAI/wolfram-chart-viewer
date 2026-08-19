@@ -49,6 +49,7 @@ function createChartFormatterSubAgent(type: ChartTypeLiteral): SubAgent {
   return {
     name: `${type}-formatter`,
     description: `Format data as ${type} chart`,
+    model: env["CHART_SUBAGENT"],
     systemPrompt: prompt,
     responseFormat: toolStrategy<typeof schema>(schema, {
       handleError: true,
@@ -110,6 +111,7 @@ export async function createWolframAgent(): Promise<DeepAgent> {
       {
         name: "wolfram-agent",
         description: "Run wolfram queries based on user requests",
+        model: env["CHART_SUBAGENT"],
         tools: await wolfram.getTools(),
         systemPrompt: `You are a wolfram alpha agent designed to gather information through designated tools that connect to wolfram.
 
