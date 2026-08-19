@@ -39,7 +39,7 @@ if (!chartData.collections.length) {
 
 onMounted(async () => {
   try {
-    const data: ChartDataDTO[] = await $fetch("/static-chart-data.json");
+    const data = await $fetch<ChartDataDTO[]>("/static-chart-data.json");
     const staticCollection = chartData.collections.find(
       (c) => c.name === "Static",
     );

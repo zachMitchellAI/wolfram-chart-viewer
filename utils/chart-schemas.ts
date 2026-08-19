@@ -192,6 +192,7 @@ export const ChartDataDTOSchema = z
     toolCallsUsed: z.number(),
     shortenedQuery: z.string(),
     dataset: ChartConfigurationSchema,
+    loading: z.boolean(),
   })
   .strict();
 

@@ -1,13 +1,11 @@
 import { type ChartDataDTO } from "./chart-schemas";
 
-export interface Loading {
-  loading: boolean;
-}
+export type ChartDataSkeleton = Partial<ChartDataDTO> & { loading: true };
 
 export interface Collection {
   name: string;
   queriable: boolean;
-  entries: Array<ChartDataDTO | Loading>;
+  entries: Array<ChartDataDTO | ChartDataSkeleton>;
 }
 
 // Initial state for pinia

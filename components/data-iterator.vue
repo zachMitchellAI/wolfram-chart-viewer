@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import type { ChartDataDTO } from "~/utils/chart-schemas";
+import type { ChartDataSkeleton } from "~/utils/use-chart-data.interface";
+
 interface DataIteratorProps {
-  items: ChartDataDTO[];
+  items: (ChartDataDTO | ChartDataSkeleton)[];
   activeDataset: ChartDataDTO | null;
   onSetActiveDataset: (dataset: ChartDataDTO) => void;
 }

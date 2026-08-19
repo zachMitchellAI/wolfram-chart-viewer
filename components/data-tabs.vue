@@ -23,7 +23,7 @@
         </v-sheet>
 
         <data-iterator
-          :items="coll.entries"
+          :items="coll?.entries"
           :active-dataset="chartData.activeDataset"
           @set-active-dataset="chartData.setActiveDataset"
         />
@@ -33,8 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Collection } from "~/utils/use-chart-data.interface";
-
 const chartData = useChartData();
 const tab = ref("");
 
