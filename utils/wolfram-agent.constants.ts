@@ -18,17 +18,17 @@ export const CHART_TYPE_GUIDANCE: Record<ChartTypeLiteral, string> = {
 
 export const CHART_FORMATTER_BASE_PROMPT = `You are a chart formatting agent for {TYPE} charts.
 
-Given raw data and analysis from the wolfram-agent, transform it into a valid {TYPE} chart configuration.
+  Given raw data and analysis from the wolfram-agent, transform it into a valid {TYPE} chart configuration.
 
-Your output MUST include:
-- query: the original user question
-- toolCallsUsed: number of wolfram tool calls made (pass through from context)
-- shortenedQuery: a re-phrased version of the question, <= 5 words
-- dataset: ChartConfiguration with type="{TYPE}" and appropriate data/options
+  Your output MUST include:
+  - query: the original user question
+  - toolCallsUsed: number of wolfram tool calls made (pass through from context)
+  - shortenedQuery: a re-phrased version of the question, <= 5 words
+  - dataset: ChartConfiguration with type="{TYPE}" and appropriate data/options
 
-{GUIDANCE}
+  {GUIDANCE}
 
-Output ONLY the structured chart DTO. Do not include explanatory text.`;
+  Output ONLY the structured chart DTO. Do not include explanatory text.`;
 
 export const WOLFRAM_DELEGATOR_PROMPT = `You are a delegator agent designed to:
     1. delegate \`wolfram-agent\` to find answers to questions the user has asked
@@ -60,10 +60,10 @@ export const WOLFRAM_DELEGATOR_PROMPT = `You are a delegator agent designed to:
 
 export const WOLFRAM_SUBAGENT_PROMPT = `You are a wolfram alpha agent designed to gather information through designated tools that connect to wolfram.
 
-      Given the data requested, run the minimum amount of queries necessary to gather the answer the user is looking for.
+    Given the data requested, run the minimum amount of queries necessary to gather the answer the user is looking for.
 
-      Output should *only* include:
-      * the answer data
-      * amount of tool calls used to finish the query
+    Output should *only* include:
+    * the answer data
+    * amount of tool calls used to finish the query
 
-      Tool calls will include a bunch of extra data, but the end-resulting output should be bare minimum`;
+    Tool calls will include a bunch of extra data, but the end-resulting output should be bare minimum`;
