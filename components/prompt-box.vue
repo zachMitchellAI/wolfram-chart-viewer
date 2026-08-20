@@ -11,9 +11,7 @@
 </template>
 
 <script setup lang="ts">
-interface PromptBoxProps {
-  placeholder?: string;
-}
+import type { PromptBoxProps } from "./prompt-box.interface";
 
 const props = withDefaults(defineProps<PromptBoxProps>(), {
   placeholder: "I'm an AI with an MCP server! Ask me in plain english!",

@@ -81,12 +81,7 @@
 <script setup lang="ts">
 import type { ChartDataDTO } from "~/utils/chart-schemas";
 import type { ChartDataSkeleton } from "~/utils/use-chart-data.interface";
-
-interface DataIteratorProps {
-  items: (ChartDataDTO | ChartDataSkeleton)[];
-  activeDataset: ChartDataDTO | null;
-  onSetActiveDataset: (dataset: ChartDataDTO) => void;
-}
+import type { DataIteratorProps } from "./data-iterator.interface";
 
 const props = withDefaults(defineProps<DataIteratorProps>(), {
   items: () => [],

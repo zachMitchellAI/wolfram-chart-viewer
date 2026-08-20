@@ -11,9 +11,7 @@
 </template>
 
 <script setup lang="ts">
-interface AppTitleBarProps {
-  activeDataset: ChartDataDTO;
-}
+import type { AppTitleBarProps } from "./app-title-bar.interface";
 
 const props = defineProps<AppTitleBarProps>();
 

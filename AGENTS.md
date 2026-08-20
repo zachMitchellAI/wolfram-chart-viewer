@@ -33,6 +33,7 @@ When working with charts, import from this barrel file rather than directly from
 - Imports of components DO NOT require having explicit imports. Simply import the component, then confirm the type is working by running the aformentioned type-check
 - use kebab-case for file names & component names within the files themselves
 - All `.vue` files need to have their styles on top, component templates in the middle, and scripts on the bottom.
+- Interfaces, and string constants MUST have their own dedicated files (`utils/file.constants.ts`, `utils/file.interface.ts`)
 
 #### AVOID:
 
