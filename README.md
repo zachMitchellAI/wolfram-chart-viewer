@@ -115,3 +115,4 @@ Display the entire nutrition facts for "chicken". It must be a bar chart, should
 ![Protein](./gh-readme-assets/protein.png)
 ![Chicken](./gh-readme-assets/chicken.png)
 ![Weather](./gh-readme-assets/weather.png)
+![Color](./gh-readme-assets/color.png)
