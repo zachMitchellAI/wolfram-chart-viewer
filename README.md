@@ -103,6 +103,9 @@ Display the entire nutrition facts for "chicken". It must be a bar chart, should
 # Known Bugs
 
 - GLM5.2 will sometimes make weird chart data, it confuses chart.js if that happens it can cause the app to crash.
+- ESLint for typescript 7.0.2 is not supported: https://github.com/typescript-eslint/typescript-eslint/issues/12518 - they plan on doing support for 7.1, as such its not in this project until then
+- Importing types is bugged in 7.0.2 and CLI/Server rendering. `.vue` files will have interfaces in-file, which is alright. The rest of the imports nuxt is doing inferrence on.
+  - Strangely enough, zod exports somehow escape this quirk
 
 # Gallery
 

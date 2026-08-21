@@ -11,7 +11,13 @@
 </template>
 
 <script setup lang="ts">
-import type { PromptBoxProps } from "./prompt-box.interface";
+// TODO: it's not possible to import types right now on the latest version of TS if this is purely CLI/Server Side.
+// Strange quirk, because in some files, zod types can work perfectly fine (z.infer perhaps)
+// Would be worth changing at some point, but right now it's fine to just have these in the vue files as a single unit
+// https://github.com/vuejs/vue-jest/issues/565
+export interface PromptBoxProps {
+  placeholder?: string;
+}
 
 const props = withDefaults(defineProps<PromptBoxProps>(), {
   placeholder: "I'm an AI with an MCP server! Ask me in plain english!",

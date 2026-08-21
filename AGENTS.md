@@ -34,6 +34,7 @@ When working with charts, import from this barrel file rather than directly from
 - use kebab-case for file names & component names within the files themselves
 - All `.vue` files need to have their styles on top, component templates in the middle, and scripts on the bottom.
 - Interfaces, and string constants MUST have their own dedicated files (`utils/file.constants.ts`, `utils/file.interface.ts`)
+  - Exception: `.vue` files can't import types in TS 7.0.2, therefore interfaces are in-file
 
 #### AVOID:
 

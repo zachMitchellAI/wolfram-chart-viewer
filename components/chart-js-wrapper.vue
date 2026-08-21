@@ -3,32 +3,30 @@
 </template>
 
 <script setup lang="ts">
+interface ChartJSWrapperProps {
+  id?: string;
+  config?: ChartConfiguration;
+}
 import { onMounted, useTemplateRef, watch } from "vue";
 import { Chart } from "chart.js/auto";
 
-const props = withDefaults(
-  defineProps<{
-    id?: string;
-    config?: ChartConfiguration;
-  }>(),
-  {
-    config: () =>
-      ({
-        type: "bar",
-        data: {
-          labels: ["alpha", "beta", "gamma", "theta"],
-          datasets: [
-            {
-              label: "Default Placeholder Data",
-              data: [1, 2, 3, 4],
-              backgroundColor: "#FFFA",
-              borderWidth: 1,
-            },
-          ],
-        },
-      }) as ChartConfiguration,
-  },
-);
+const props = withDefaults(defineProps<ChartJSWrapperProps>(), {
+  config: () =>
+    ({
+      type: "bar",
+      data: {
+        labels: ["alpha", "beta", "gamma", "theta"],
+        datasets: [
+          {
+            label: "Default Placeholder Data",
+            data: [1, 2, 3, 4],
+            backgroundColor: "#FFFA",
+            borderWidth: 1,
+          },
+        ],
+      },
+    }) as ChartConfiguration,
+});
 
 const chartRef = useTemplateRef<HTMLCanvasElement>("chart-ref");
 let chartInstance: Chart | null = null;
